@@ -1,6 +1,5 @@
-## Project Titanium Octopus
+## Project Titanium Octopus --- Version 0.0.0
 
-Version 0.0.0
 
 Team 1200 ACREs <br />
 
