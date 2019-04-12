@@ -1,6 +1,6 @@
 ## Project Titanium Octopus
 
-Team 1200ACREs <br />
+Team 1200 ACREs <br />
 
 Senior Design Project for CS 179N <br />
 
@@ -11,3 +11,5 @@ Storyboard, Level Design, & Gameplay: Richard Luong, Elijah Nicasio <br />
 
 ## Attributions
 Unity <br />
+
+## Description
