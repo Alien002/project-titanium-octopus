@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -495,7 +495,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 971841379}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1459667692}
@@ -569,6 +569,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10b7bb247d298d64a8621153ff1c3a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileMass: 0
+  projectileDiameter: 0
+  projectileLength: 0
+  projectileMaterial: 0
+  ballisticCoefficient: 0
+  propellantMass: 0
+  propellantType: 0
+  propellantEnergyDensity: 5.934e+9
+  propellantSpecificVolume: 0.0010111224
+  specificGasConstant: 0
+  airPressure: 0
+  airTemperature: 0
 --- !u!1 &1135644461
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,6 +760,10 @@ MonoBehaviour:
   camera: {fileID: 971841379}
   bullet: {fileID: 1080246401}
   player: {fileID: 1777945019}
+  barrelLength: 0
+  barrelDiameter: 0
+  barrelMaterial: 0
+  barrelMetersPerTwist: 0
 --- !u!1 &1696281159
 GameObject:
   m_ObjectHideFlags: 0
