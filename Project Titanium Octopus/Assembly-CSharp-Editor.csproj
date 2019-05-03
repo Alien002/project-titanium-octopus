@@ -62,35 +62,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\BulletUnity\Examples\SceneMenu\Editor\UpdateScenesListMenu.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Constraints\Editor\B6DOFConstraintEditor.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Constraints\Editor\BBallSocketConstraintEditor.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Constraints\Editor\BConeTwistConstraintEditor.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Constraints\Editor\BFixedConstraintEditor.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Constraints\Editor\BHingedConstraintEditor.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Constraints\Editor\BSliderConstraintEditor.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Constraints\Editor\BTypedConstraintEditor.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Editor\BBoxShapeEditor.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Editor\BBvhTriangleMeshShapeEditor.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Editor\BCapsuleShapeEditor.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Editor\BCollisionObjectEditor.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Editor\BCompoundShapeEditor.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Editor\BConeShapeEditor.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Editor\BConvexHullShapeEditor.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Editor\BConvexTriangleMeshShapeEditor.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Editor\BCylinderShapeEditor.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Editor\BGhostObjectEditor.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Editor\BMultiSphereShapeEditor.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Editor\BPairCachingGhostObjectEditor.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Editor\BPhysicsWorldEditor.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Editor\BPrimitiveComponentOrderSorter.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Editor\BRigidBodyEditor.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Editor\BSoftBodyComponentOrderSorter.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Editor\BSoftBodyEditor.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Editor\BSphereShapeEditor.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Editor\EditorHelpers.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Editor\EditorInterface.cs" />
-    <Compile Include="Assets\BulletUnity\Scripts\Editor\PrimitiveEditor.cs" />
+    <Compile Include="Assets\Editor\ImageEffects\AntialiasingEditor.cs" />
+    <Compile Include="Assets\Editor\ImageEffects\BloomAndFlaresEditor.cs" />
+    <Compile Include="Assets\Editor\ImageEffects\BloomEditor.cs" />
+    <Compile Include="Assets\Editor\ImageEffects\CameraMotionBlurEditor.cs" />
+    <Compile Include="Assets\Editor\ImageEffects\ColorCorrectionCurvesEditor.cs" />
+    <Compile Include="Assets\Editor\ImageEffects\ColorCorrectionLookupEditor.cs" />
+    <Compile Include="Assets\Editor\ImageEffects\DepthOfFieldDeprecatedEditor.cs" />
+    <Compile Include="Assets\Editor\ImageEffects\DepthOfFieldEditor.cs" />
+    <Compile Include="Assets\Editor\ImageEffects\EdgeDetectionEditor.cs" />
+    <Compile Include="Assets\Editor\ImageEffects\NoiseAndGrainEditor.cs" />
+    <Compile Include="Assets\Editor\ImageEffects\SunShaftsEditor.cs" />
+    <Compile Include="Assets\Editor\ImageEffects\TonemappingEditor.cs" />
+    <Compile Include="Assets\Editor\ImageEffects\VignetteAndChromaticAberrationEditor.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>Z:/DevTools/GitHub/project-titanium-octopus/Project Titanium Octopus/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

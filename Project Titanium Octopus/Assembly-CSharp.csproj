@@ -62,6 +62,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_Scripts\Bone.cs" />
+    <Compile Include="Assets\_Scripts\CameraController.cs" />
+    <Compile Include="Assets\_Scripts\Controller.cs" />
+    <Compile Include="Assets\_Scripts\fpsdisplay.cs" />
+    <Compile Include="Assets\_Scripts\Game.cs" />
+    <Compile Include="Assets\_Scripts\mainGUI.cs" />
+    <Compile Include="Assets\_Scripts\Player.cs" />
+    <Compile Include="Assets\_Scripts\Slime.cs" />
+    <Compile Include="Assets\_Scripts\TouchController.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\GUIScript.cs" />
     <Compile Include="Assets\Scripts\Gun.cs" />
@@ -637,6 +646,12 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>Z:/DevTools/2019.1.0f2/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{8BFC0110-0CE1-2E51-2ABD-D72B0A470C98}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
