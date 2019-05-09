@@ -31,6 +31,14 @@ public class Gun : MonoBehaviour
 
     private Vector3 pos;
 
+    private float t; // Time, used for bulletCam
+    private bool bulletCamReady;
+    private bool shotFired; // Checks if shot is fired already, for bulletCam
+    private GameObject tempCamera;
+    private GameObject bulletToFollow;
+    private float initDeltaTime;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,24 +57,35 @@ public class Gun : MonoBehaviour
         muzzleVelocity = (Mathf.Pow(((2.0f * projectileEnergy) / bullet.GetComponent<Bullet>().projectileMass), 0.5f));
         bulletSpin = muzzleVelocity * barrelMetersPerTwist;
         bulletGyroscopicStabilityFactor = 0.0f;
+
+        // BulletCam initializations
+        bulletCamReady = false;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        //if (Input.GetButtonDown("Fire1"))
+        if (bulletCamReady)
         {
-            i++;
-            // Shoot every 4 cycles
-            if (i == 4)
+            updateBulletCam();
+        }
+        else
+        {
+            if (Input.GetButtonDown("Fire1"))
             {
-                Shoot();
-                i = 0;
+                // Update is called once per frame
+                // i++;
+                //if (i == 4)
+                {
+                    //Shoot();
+                    //  i = 0;
+                    initBulletCam();
+                }
             }
         }
     }
 
-    void Shoot()
+    GameObject Shoot()
     {
         // Create Bullet
         GameObject tempBullet = Instantiate(bullet);
@@ -81,5 +100,61 @@ public class Gun : MonoBehaviour
         // Impart velocity to bullet
         tempBullet.GetComponent<Rigidbody>().AddForce(muzzleVelocity * 0.4f * (camera.GetComponent<Transform>().forward), ForceMode.VelocityChange);
         // tempBullet.GetComponent<Transform>().rotation = Quaternion.LookRotation(tempBullet.GetComponent<Rigidbody>().velocity);
+
+        return tempBullet;
+    }
+
+    void initBulletCam()
+    {
+        tempCamera = new GameObject();
+        tempCamera.AddComponent<Camera>();
+
+        tempCamera.GetComponent<Transform>().position = bullet.GetComponent<Transform>().position + new Vector3(1f, 0f, 0f);
+        tempCamera.GetComponent<Transform>().rotation = Quaternion.LookRotation(bullet.GetComponent<Transform>().position - tempCamera.GetComponent<Transform>().position);
+
+        tempCamera.GetComponent<Camera>().enabled = true;
+        camera.GetComponent<Camera>().enabled = false;
+
+        t = 0.0f;
+        shotFired = false;
+        bulletCamReady = true;
+    }
+
+    void updateBulletCam()
+    {
+        t += Time.deltaTime;
+
+        if (t >= 1.0f && !shotFired)
+        {
+            bulletToFollow = Shoot();
+            shotFired = true;
+        }
+
+        if (shotFired)
+        {
+            if (bulletToFollow != null)
+            {
+                tempCamera.GetComponent<Transform>().position = bulletToFollow.GetComponent<Transform>().position + new Vector3(1f, 0f, 0f);
+                initDeltaTime = Time.fixedDeltaTime;
+                //Time.timeScale = .5f;
+                //Time.fixedDeltaTime = Time.timeScale * initDeltaTime;
+                //print(initDeltaTime);
+            }
+
+            if (t >= 5.0f || bulletToFollow == null)
+            {
+                tempCamera.GetComponent<Camera>().enabled = false;
+                camera.GetComponent<Camera>().enabled = true;
+
+                GameObject toDestroy = tempCamera;
+                tempCamera = null;
+                Destroy(toDestroy);
+
+                //Time.timeScale = 1.0f;
+                //Time.fixedDeltaTime = .02f;
+
+                bulletCamReady = false;
+            }
+        }
     }
 }
