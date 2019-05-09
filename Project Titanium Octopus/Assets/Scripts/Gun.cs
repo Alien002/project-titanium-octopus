@@ -77,9 +77,9 @@ public class Gun : MonoBehaviour
                 // i++;
                 //if (i == 4)
                 {
-                    //Shoot();
+                    Shoot();
                     //  i = 0;
-                    initBulletCam();
+                    //initBulletCam();
                 }
             }
         }
