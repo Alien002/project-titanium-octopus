@@ -1,5 +1,0 @@
-sceneSetups:
-- path: Assets/Easy Weapons/Demo/first_person.unity
-  isLoaded: 1
-  isActive: 1
-  isSubScene: 0
