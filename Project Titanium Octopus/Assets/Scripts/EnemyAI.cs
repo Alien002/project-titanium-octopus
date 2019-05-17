@@ -44,4 +44,12 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name.Contains("Bullet"))
+        {
+            gameDirector.GetComponent<GameDirector>().enemyKilled();
+            Destroy(this.gameObject);
+        }
+    }
 }

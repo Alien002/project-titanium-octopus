@@ -83,6 +83,7 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        print(collision.gameObject.name);
         // RICOCHET GOES HERE
         if (initialShot)
         {
@@ -108,6 +109,7 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
+        print(collider.gameObject.name);
         if (initialShot)
         {
             initialShot = false;
