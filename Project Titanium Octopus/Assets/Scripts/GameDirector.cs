@@ -67,9 +67,7 @@ public class GameDirector : MonoBehaviour
             if (numEnemies == 0)
             {
                 numEnemies++;
-                print(curRoom);
                 int spawnInd = Random.Range(0, 2);
-                print(curRoom + "/EnemySpawns/EnemySpawn" + spawnInd);
                 Vector3 spawnCoord = GameObject.Find(curRoom + "/EnemySpawns/EnemySpawn" + spawnInd).GetComponent<Transform>().position;
                 spawnCoord.y += 3;
 
