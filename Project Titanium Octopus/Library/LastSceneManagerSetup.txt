@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/TestRange.unity
+- path: C:/Users/RichardPC/Desktop/project-titanium-octopus-master/Main Menu/Assets/Scenes/MainMenu.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
