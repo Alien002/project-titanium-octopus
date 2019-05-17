@@ -11,10 +11,13 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
 
+    private string curRoom; //current room
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        curRoom = "default";
     }
 
     // Update is called once per frame
@@ -40,5 +43,18 @@ public class PlayerController : MonoBehaviour
         {
             GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
+    }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.name.Contains("Room"))
+        {
+            curRoom = collider.gameObject.name;
+        }
+    }
+
+    public string getRoom()
+    {
+        return curRoom;
     }
 }
