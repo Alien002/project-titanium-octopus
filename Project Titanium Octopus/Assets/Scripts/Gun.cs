@@ -71,7 +71,7 @@ public class Gun : MonoBehaviour
         }
         else
         {
-            if (Input.GetButtonDown("Fire1") && player.GetComponent<PlayerUI>().currentammo > 0 && player.GetComponent<PauseMenu>().gameover != false)
+            if (Input.GetButtonDown("Fire1") && player.GetComponent<PlayerUI>().currentammo > 0 && player.GetComponent<PauseMenu>().gameover == false)
             {
                 // Update is called once per frame
                 // i++;
@@ -99,6 +99,7 @@ public class Gun : MonoBehaviour
         tempBullet.GetComponent<Transform>().rotation = bullet.GetComponent<Transform>().rotation;
         tempBullet.GetComponent<Transform>().localScale = new Vector3(7.5f, 7.5f, 7.5f);
         // Impart velocity to bullet
+        //tempBullet.GetComponent<Rigidbody>().AddForce(1 * 0.4f * (camera.GetComponent<Transform>().forward), ForceMode.VelocityChange);
         tempBullet.GetComponent<Rigidbody>().AddForce(muzzleVelocity * 0.4f * (camera.GetComponent<Transform>().forward), ForceMode.VelocityChange);
         // tempBullet.GetComponent<Transform>().rotation = Quaternion.LookRotation(tempBullet.GetComponent<Rigidbody>().velocity);
 

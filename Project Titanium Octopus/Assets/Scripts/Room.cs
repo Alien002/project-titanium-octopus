@@ -26,9 +26,14 @@ public class Room : MonoBehaviour
         //boxCol.offset = bounds.center - transform.position;
         //boxCol.size = bounds.size;
 
-        Transform floor = this.GetComponent<Transform>().Find("Floor");
+        //Transform floor = this.GetComponent<Transform>();
+        bounds = this.GetComponent<MeshCollider>().bounds;
 
-        if (floor)
+        boxCol = this.gameObject.AddComponent<BoxCollider>();
+        boxCol.center = bounds.center + new Vector3(0f, -2f, 0f);
+        boxCol.size = bounds.size;
+
+        /*if (floor)
         {
             boxCol = this.gameObject.AddComponent<BoxCollider>();
 
@@ -37,7 +42,7 @@ public class Room : MonoBehaviour
             //print(fl.position);
             boxCol.center = floor.localPosition;
             boxCol.size = new Vector3(floor.localScale.x, 10.0f, floor.localScale.z);
-        }
+        }*/
         /*Transform[] allDescendants = gameObject.GetComponentsInChildren<Transform>();
         foreach (Transform desc in allDescendants)
         {

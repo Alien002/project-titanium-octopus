@@ -83,14 +83,13 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        print(collision.gameObject.name);
         // RICOCHET GOES HERE
         if (initialShot)
         {
             initialShot = false;
         }
         // If it hits a wall, it should bounce horizontally and continue falling vertically
-        if (collision.gameObject.name.Contains("Wall"))
+        //if (collision.gameObject.name.Contains("Wall"))
         {
             GetComponent<Rigidbody>().velocity = new Vector3(-GetComponent<Rigidbody>().velocity.x / 10f, GetComponent<Rigidbody>().velocity.y, -GetComponent<Rigidbody>().velocity.z / 10f);
         }
@@ -109,7 +108,6 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        print(collider.gameObject.name);
         if (initialShot)
         {
             initialShot = false;
