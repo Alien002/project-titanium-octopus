@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -241,7 +241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 50e5bf297a1fe734abcceddf742133c1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 50e5bf297a1fe734abcceddf742133c1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -564,23 +564,23 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1080246401}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10b7bb247d298d64a8621153ff1c3a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileMass: 0
-  projectileDiameter: 0
-  projectileLength: 0
+  projectileMass: 0.0116638
+  projectileDiameter: 0.0091
+  projectileLength: 0.007
   projectileMaterial: 0
-  ballisticCoefficient: 0
-  propellantMass: 0
+  ballisticCoefficient: 0.147
+  propellantMass: 0.0009655038
   propellantType: 0
   propellantEnergyDensity: 5.934e+9
   propellantSpecificVolume: 0.0010111224
-  specificGasConstant: 0
-  airPressure: 0
-  airTemperature: 0
+  specificGasConstant: 287.058
+  airPressure: 101300
+  airTemperature: 273.15
 --- !u!1 &1135644461
 GameObject:
   m_ObjectHideFlags: 0
@@ -1118,10 +1118,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 971841382}
     m_Modifications:
-    - target: {fileID: 124344, guid: d970922f1aa657c448a0761a9ee6420f, type: 3}
-      propertyPath: m_Name
-      value: WWGPistol_0
-      objectReference: {fileID: 0}
     - target: {fileID: 468740, guid: d970922f1aa657c448a0761a9ee6420f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.1
@@ -1177,6 +1173,10 @@ PrefabInstance:
     - target: {fileID: 468740, guid: d970922f1aa657c448a0761a9ee6420f, type: 3}
       propertyPath: m_LocalScale.z
       value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 124344, guid: d970922f1aa657c448a0761a9ee6420f, type: 3}
+      propertyPath: m_Name
+      value: WWGPistol_0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d970922f1aa657c448a0761a9ee6420f, type: 3}

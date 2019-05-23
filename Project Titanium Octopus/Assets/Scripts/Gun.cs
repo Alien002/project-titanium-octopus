@@ -54,7 +54,7 @@ public class Gun : MonoBehaviour
         // Energy on bullet and speed calculations
         explosionEnergy = (bullet.GetComponent<Bullet>().propellantMass * bullet.GetComponent<Bullet>().propellantEnergyDensity * bullet.GetComponent<Bullet>().propellantSpecificVolume);
         projectileEnergy = explosionEnergy - (explosionGasHeatEnergy + explosionUnburnedPotentialEnergy + barrelHeatEnergy + barrelFrictionEnergy);
-        muzzleVelocity = (Mathf.Pow(((2.0f * projectileEnergy) / bullet.GetComponent<Bullet>().projectileMass), 0.5f));
+        muzzleVelocity = 1.0f;// (Mathf.Pow(((2.0f * projectileEnergy) / bullet.GetComponent<Bullet>().projectileMass), 0.5f));
         bulletSpin = muzzleVelocity * barrelMetersPerTwist;
         bulletGyroscopicStabilityFactor = 0.0f;
 
@@ -76,6 +76,7 @@ public class Gun : MonoBehaviour
                 // Update is called once per frame
                 // i++;
                 //if (i == 4)
+                
                 {
                     Shoot();
                     //  i = 0;

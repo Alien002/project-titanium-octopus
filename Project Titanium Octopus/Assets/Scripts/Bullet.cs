@@ -83,6 +83,7 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        print(collision.gameObject.name);
         // RICOCHET GOES HERE
         if (initialShot)
         {
@@ -108,6 +109,7 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
+        print(collider.gameObject.name);
         if (initialShot)
         {
             initialShot = false;
@@ -128,10 +130,13 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerStay(Collider collider)
     {
-        GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x / 100f, 0.0f, GetComponent<Rigidbody>().velocity.z / 100f);
-        if (GetComponent<Rigidbody>().velocity.x < 0.1f)
-            GetComponent<Rigidbody>().velocity = new Vector3(0.0f, GetComponent<Rigidbody>().velocity.y, GetComponent<Rigidbody>().velocity.z);
-        if (GetComponent<Rigidbody>().velocity.z < 0.1f)
-            GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, GetComponent<Rigidbody>().velocity.y, 0.0f);
+        if (collider.gameObject.name.Contains("Gel"))
+        {
+            GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x / 100f, 0.0f, GetComponent<Rigidbody>().velocity.z / 100f);
+            if (GetComponent<Rigidbody>().velocity.x < 0.1f)
+                GetComponent<Rigidbody>().velocity = new Vector3(0.0f, GetComponent<Rigidbody>().velocity.y, GetComponent<Rigidbody>().velocity.z);
+            if (GetComponent<Rigidbody>().velocity.z < 0.1f)
+                GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, GetComponent<Rigidbody>().velocity.y, 0.0f);
+        }
     }
 }
