@@ -71,7 +71,7 @@ public class Gun : MonoBehaviour
         }
         else
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1") && player.GetComponent<PlayerUI>().currentammo > 0 && player.GetComponent<PauseMenu>().gameover != false)
             {
                 // Update is called once per frame
                 // i++;

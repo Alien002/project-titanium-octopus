@@ -16,10 +16,16 @@ public class PlayerUI : MonoBehaviour
     public Text health_text;
     public Text Bullet_text;
     public Text point_text;
+    public GameObject player;
+    public AudioSource reload_sound;
+    public AudioSource fire_sound;
+
     // Start is called before the first frame update
     void Start()
     {
-        currenthealth = maxhealth;
+        reload_sound.mute = true;
+        fire_sound.mute = true;
+        currenthealth = 2;
         currentammo = maxclip;
         ammo_used = 0;
         health_text = health_text.GetComponent<Text>();
@@ -28,77 +34,112 @@ public class PlayerUI : MonoBehaviour
         
 
         health_text.text = currenthealth.ToString();
-        health_text.fontSize = 18;
+        health_text.fontSize = 24;
         Bullet_text.text = currentammo.ToString() + "\\" + reserve.ToString();
-        Bullet_text.fontSize = 18;
+        Bullet_text.fontSize = 24;
         point_text.text = "Points" + points;
+        point_text.fontSize = 24;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+
+        if (player.GetComponent<PauseMenu>().gameover == false && player.GetComponent<PauseMenu>().GamePaused == false)
         {
-            if (reserve != 0)
+            if (Input.GetMouseButtonDown(0))
             {
-                currentammo--;
-                ammo_used++;
-                points++;
-                if (currentammo == 0)
+                if (reserve != 0)
                 {
-                    ammo_used = 0;
-                    if (reserve <= maxclip)
-                    {
-                        currentammo = reserve;
-                        reserve -= maxclip;
-                        total_ammo -= maxclip;
-                    }
-                    else
-                    {
-                        currentammo = maxclip;
-                        reserve -= maxclip;
-                        total_ammo -= maxclip;
-                    }
+                    fire_sound.mute = false;
 
-                }
-            }
-            else
-            {
-                if(currentammo > 0)
-                {
+                    fire_sound.Play();
                     currentammo--;
+                    total_ammo--;
+                    ammo_used++;
+                    points++;
+                    if (currentammo == 0)
+                    {
+                        ammo_used = 0;
+                        if (reserve <= maxclip)
+                        {
+                            currentammo = reserve;
+                            reserve -= maxclip;
+                        }
+                        else
+                        {
+                            currentammo = maxclip;
+                            reserve -= maxclip;
+                        }
 
+                    }
+                }
+                else
+                {
+                    if (currentammo > 0)
+                    {
+                        fire_sound.mute = false;
+
+                        fire_sound.Play();
+
+                        currentammo--;
+                        total_ammo--;
+                        ammo_used++;
+                        points++;
+
+                    }
                 }
             }
         }
 
         if (Input.GetMouseButtonDown(1))
         {
-            currenthealth--;
+            if (currenthealth == 0)
+            {
+
+            }
+            else
+            {
+                currenthealth--;
+            }
         }
 
         if (Input.GetKey(KeyCode.R))
         {
-            if (currentammo < 30)
+            if (currentammo < maxclip && reserve != 0)
             {
-                if (ammo_used > total_ammo)
+                reload_sound.mute = false;
+                reload_sound.Play();
+                if (currentammo >= total_ammo)
                 {
                     currentammo = total_ammo;
+                    reserve = 0;
                 }
                 else
                 {
-                    currentammo = maxclip;
-                    reserve -= ammo_used;
-                    total_ammo -= ammo_used;
-                    ammo_used = 0;
+                    if (currentammo + reserve > maxclip)
+                    {
+                        currentammo = maxclip;
+                        reserve -= ammo_used;
+                        ammo_used = 0;
+                    }
+                    else
+                    {
+                        currentammo += reserve;
+                        reserve = 0;
+                        ammo_used = 0;
+                    }
+                    
                 }
             }
         }
         health_text.text = currenthealth.ToString();
-        health_text.fontSize = 18;
+        health_text.fontSize = 40;
         Bullet_text.text = currentammo.ToString() + "\\" + reserve.ToString();
-        Bullet_text.fontSize = 18;
-        point_text.text = "Points" + points;
+        Bullet_text.fontSize = 32;
+        point_text.text = "Points: " + points;
+        point_text.fontSize = 32;
+
     }
 }

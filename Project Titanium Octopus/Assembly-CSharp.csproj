@@ -67,6 +67,7 @@
     <Compile Include="Assets\_Scripts\Controller.cs" />
     <Compile Include="Assets\_Scripts\fpsdisplay.cs" />
     <Compile Include="Assets\_Scripts\Game.cs" />
+    <Compile Include="Assets\_Scripts\GameOver.cs" />
     <Compile Include="Assets\_Scripts\mainGUI.cs" />
     <Compile Include="Assets\_Scripts\Player.cs" />
     <Compile Include="Assets\_Scripts\Slime.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Assets\Unity UI Sample\Scripts\TiltWindow.cs" />
     <None Include="Assets\Unity UI Sample\Fonts\Jupiter\LICENSE.txt" />
     <None Include="Assets\Unity UI Sample\Textures and Sprites\SF UI\Background\LICENSE.txt" />
+    <None Include="Assets\MentalDreamsAssets\SoldierSoundsPack\ReadMe!.txt" />
     <None Include="Assets\Unity UI Sample\Materials\UI-Default-No-Alpha.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/RichardPC/Desktop/project-titanium-octopus/Project Titanium Octopus/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
