@@ -54,15 +54,16 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
-            i++;
+            /*i++;
             // Shoot every 4 cycles
             if (i == 4)
             {
                 Shoot();
                 i = 0;
-            }
+            }*/
+            Shoot();
         }
     }
 
