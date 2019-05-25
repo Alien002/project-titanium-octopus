@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &7230746809496657887
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3280819902046049898}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.037080377, y: 0.029504586, z: 0.09722964}
+  m_Center: {x: 0, y: 0.0041195927, z: -0.043641176}
 --- !u!114 &6820206063343296838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9,12 +22,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 3280819902046049898}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c73bb9c759970ea4da50df6f29e3dfa5, type: 3}
+  m_Script: {fileID: 11500000, guid: ff1d3ce6fa5c242b4b3afbb3e01331b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMaxHealth: 150
-  enemyCurrHealth: 150
-  enemyDamage: 0
+  enemyMaxHealth: 100
+  enemyCurrHealth: 0
+  enemyDamage: 50
+--- !u!65 &2145374587046481233
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3280819902369100966}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.045130014, y: 0.05075504, z: 0.04089487}
+  m_Center: {x: 0.00057274476, y: 0.00095315656, z: 0.008447437}
 --- !u!114 &6820206063690436204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38,6 +64,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6820206064329559181}
+  - component: {fileID: 3537115446586154898}
   m_Layer: 0
   m_Name: enemy_model_prefab
   m_TagString: Untagged
@@ -54,13 +81,25 @@ Transform:
   m_GameObject: {fileID: 6820206064329559180}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 23.75}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 2007630757264778361}
   - {fileID: 2007630757470340789}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3537115446586154898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6820206064329559180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0552e50ec47d8b498f202fe5cea97ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6820206064868511587
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -148,6 +187,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 313964aaeba3d5441918b85cc85889ad, type: 2}
+    - target: {fileID: -1504981713932161579, guid: 4fb63727576f2456c9ef0b558c8c9caa,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fb63727576f2456c9ef0b558c8c9caa, type: 3}
 --- !u!1 &3280819902046049898 stripped

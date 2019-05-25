@@ -90,6 +90,7 @@ public class Bullet : MonoBehaviour
         }
         // If it hits a wall, it should bounce horizontally and continue falling vertically
         //if (collision.gameObject.name.Contains("Wall"))
+        if (collision.gameObject.name.Contains("Room"))
         {
             GetComponent<Rigidbody>().velocity = new Vector3(-GetComponent<Rigidbody>().velocity.x / 10f, GetComponent<Rigidbody>().velocity.y, -GetComponent<Rigidbody>().velocity.z / 10f);
         }

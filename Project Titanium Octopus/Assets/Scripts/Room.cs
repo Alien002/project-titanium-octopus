@@ -29,9 +29,14 @@ public class Room : MonoBehaviour
         //Transform floor = this.GetComponent<Transform>();
         bounds = this.GetComponent<MeshCollider>().bounds;
 
-        boxCol = this.gameObject.AddComponent<BoxCollider>();
-        boxCol.center = bounds.center + new Vector3(0f, -2f, 0f);
+        GameObject child = new GameObject(this.name);
+        child.transform.parent = this.transform;
+        child.transform.position = this.transform.position;
+
+        boxCol = child.gameObject.AddComponent<BoxCollider>();
+        boxCol.center = bounds.center;// + new Vector3(0f, -2f, 0f);
         boxCol.size = bounds.size;
+        boxCol.isTrigger = true;
 
         /*if (floor)
         {

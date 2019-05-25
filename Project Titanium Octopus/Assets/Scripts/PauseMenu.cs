@@ -68,7 +68,7 @@ public class PauseMenu : MonoBehaviour
         player.GetComponent<PlayerControllerCamera>().enabled = false;
 
         player.GetComponent<PlayerController>().enabled = false;
-
+        Cursor.visible = true;
 
     }
 

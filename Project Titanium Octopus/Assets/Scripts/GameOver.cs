@@ -14,7 +14,7 @@ public class GameOver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if( player.GetComponent<PlayerUI>().currenthealth == 0)
+       if( player.GetComponent<PlayerUI>().currenthealth <= 0)
         {
 
         }

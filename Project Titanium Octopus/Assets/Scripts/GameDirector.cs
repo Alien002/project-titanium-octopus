@@ -21,6 +21,7 @@ public class GameDirector : MonoBehaviour
     private float timer;
 
     private int enemiesKilled;
+    private int maxEnemies;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,7 @@ public class GameDirector : MonoBehaviour
         isWaiting = false;
 
         enemiesKilled = 0;
+        maxEnemies = 1;
     }
 
     // Update is called once per frame
@@ -60,18 +62,23 @@ public class GameDirector : MonoBehaviour
             {
                 timer = 0.0f;
                 isWaiting = false;
+                maxEnemies++;
             }
         }
-        else if(string.Compare(curRoom,"RoomStart") != 0)
+        else if(string.Compare(curRoom, "StartingRoom_DEMO") != 0)
         {
+            print(numEnemies);
             if (numEnemies == 0)
             {
-                numEnemies++;
-                int spawnInd = Random.Range(0, 2);
-                Vector3 spawnCoord = GameObject.Find(curRoom + "/EnemySpawns/EnemySpawn" + spawnInd).GetComponent<Transform>().position;
-                spawnCoord.y += 3;
+                for (int i = 0; i < maxEnemies; i++)
+                {
+                    numEnemies++;
+                    int spawnInd = Random.Range(0, 4);
+                    Vector3 spawnCoord = GameObject.Find(curRoom + "/EnemySpawns/EnemySpawn" + spawnInd).GetComponent<Transform>().position;
+                    //spawnCoord.y += 3;
 
-                Instantiate(enemy, spawnCoord, Quaternion.identity, GameObject.Find(curRoom).GetComponent<Transform>());
+                    Instantiate(enemy, spawnCoord, Quaternion.identity, GameObject.Find(curRoom).GetComponent<Transform>());
+                }
             }
         }
     }

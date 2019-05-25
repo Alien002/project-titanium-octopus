@@ -47,9 +47,14 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
+        print(collider.gameObject.name);
         if (collider.gameObject.name.Contains("Room"))
         {
             curRoom = collider.gameObject.name;
+        }
+        if (collider.gameObject.name.Contains("enemy"))
+        {
+            this.GetComponent<PlayerUI>().currenthealth--;
         }
     }
 

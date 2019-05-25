@@ -25,7 +25,7 @@ public class PlayerUI : MonoBehaviour
     {
         reload_sound.mute = true;
         fire_sound.mute = true;
-        currenthealth = 2;
+        currenthealth = 1;
         currentammo = maxclip;
         ammo_used = 0;
         health_text = health_text.GetComponent<Text>();

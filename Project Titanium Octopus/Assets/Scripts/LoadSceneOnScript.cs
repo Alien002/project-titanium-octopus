@@ -10,6 +10,10 @@ public class LoadSceneOnScript : MonoBehaviour
     {
         SceneManager.LoadScene(sceneIndex);
     }
+    public void LoadByName(string name)
+    {
+        SceneManager.LoadScene(name);
+    }
     // Start is called before the first frame update
     void Start()
     {

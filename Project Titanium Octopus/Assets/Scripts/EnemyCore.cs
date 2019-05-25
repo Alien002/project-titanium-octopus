@@ -7,10 +7,12 @@ public class EnemyCore : MonoBehaviour
     // Start is called before the first frame update
     public int coreMaxHealth;
     public int coreCurrHealth;
+    private GameObject gameDirector;
     // Start is called before the first frame update
     void Start()
     {
         coreCurrHealth = coreMaxHealth;
+        gameDirector = GameObject.Find("GameDirector");
     }
 
     // Update is called once per frame
@@ -18,17 +20,28 @@ public class EnemyCore : MonoBehaviour
     {
         if (coreCurrHealth <= 0)
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+            KillCore();
         }
     }
 
     public void KillCore()
     {
+        Destroy(this.transform.parent.gameObject);
         coreCurrHealth = 0;
+        gameDirector.GetComponent<GameDirector>().enemyKilled();
     }
 
     public void SetMaxEnemyCore()
     {
         coreCurrHealth = coreMaxHealth;
+    }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.name.Contains("Bullet"))
+        {
+            KillCore();
+        }
     }
 }

@@ -7,8 +7,8 @@ public class EnemyAI : MonoBehaviour
     private GameObject player;
     private GameObject gameDirector;
 
-    private float speed = .02f;
-    private float searchDist = 10.0f;
+    private float speed = .05f;
+    private float searchDist = 20.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,8 @@ public class EnemyAI : MonoBehaviour
 
         if (Vector3.Distance(playerPos, curPos) <= searchDist)
         {
-            this.GetComponent<Transform>().position = Vector3.MoveTowards(curPos, playerPos, speed);
+            Vector3 moveVec = Vector3.MoveTowards(curPos, playerPos, speed);
+            this.GetComponent<Transform>().position = new Vector3(moveVec.x, this.GetComponent<Transform>().position.y, moveVec.z);
         }
     }
 
