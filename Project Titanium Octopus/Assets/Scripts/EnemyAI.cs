@@ -25,7 +25,7 @@ public class EnemyAI : MonoBehaviour
 
         if (Vector3.Distance(playerPos, curPos) <= searchDist)
         {
-            Vector3 moveVec = Vector3.MoveTowards(curPos, playerPos, speed);
+            Vector3 moveVec = Vector3.MoveTowards(curPos, playerPos, speed * Time.deltaTime);
             this.GetComponent<Transform>().position = new Vector3(moveVec.x, this.GetComponent<Transform>().position.y, moveVec.z);
         }
     }
