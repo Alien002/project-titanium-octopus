@@ -28,4 +28,9 @@ public class PlayerHealth : MonoBehaviour
     {
         playerCurrHealth -= damage;
     }
+
+    public void HealPlayer(int heal)
+    {
+        playerCurrHealth += heal;
+    }
 }
