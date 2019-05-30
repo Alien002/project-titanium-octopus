@@ -41,6 +41,7 @@ public class EnemyCore : MonoBehaviour
     {
         if (collider.gameObject.name.Contains("Bullet"))
         {
+            print("headshot");
             KillCore();
         }
     }

@@ -1,9 +1,5 @@
 sceneSetups:
-<<<<<<< HEAD
 - path: Assets/Scenes/level0.unity
-=======
-- path: Assets/Scenes/TestRange.unity
->>>>>>> Alic
   isLoaded: 1
   isActive: 1
   isSubScene: 0

@@ -2,46 +2,56 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyCore : MonoBehaviour
+public class EnemyHealth : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public int coreMaxHealth;
-    public int coreCurrHealth;
+    public int enemyMaxHealth;
+    public int enemyCurrHealth;
+    public int enemyDamage;
     private GameObject gameDirector;
     // Start is called before the first frame update
     void Start()
     {
-        coreCurrHealth = coreMaxHealth;
+        enemyCurrHealth = enemyMaxHealth;
         gameDirector = GameObject.Find("GameDirector");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (coreCurrHealth <= 0)
+        if (enemyCurrHealth <= 0)
         {
-            //Destroy(this.gameObject);
-            KillCore();
+            KillEnemy();
         }
     }
 
-    public void KillCore()
+    public void DamageEnemy(int damage)
     {
+        enemyCurrHealth -= damage;
+    }
+
+    public void KillEnemy()
+    {
+        //Destroy(this.gameObject);
         Destroy(this.transform.parent.gameObject);
-        coreCurrHealth = 0;
         gameDirector.GetComponent<GameDirector>().enemyKilled();
     }
 
-    public void SetMaxEnemyCore()
+    public void SetMaxEnemyHealth()
     {
-        coreCurrHealth = coreMaxHealth;
+        enemyCurrHealth = enemyMaxHealth;
     }
+
 
     void OnTriggerEnter(Collider collider)
     {
+        /*if (collider.gameObject.name == ("Player"))
+        {
+            collider.gameObject.GetComponent<PlayerHealth>().DamagePlayer(enemyDamage);
+        }*/
         if (collider.gameObject.name.Contains("Bullet"))
         {
-            KillCore();
+            print("body");
+            DamageEnemy(50);
         }
     }
 }
