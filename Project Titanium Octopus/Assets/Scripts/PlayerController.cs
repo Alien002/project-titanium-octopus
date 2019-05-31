@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
         }
         if (collider.gameObject.name.Contains("enemy"))
         {
-            this.GetComponent<PlayerUI>().currenthealth--;
+            this.GetComponent<PlayerUI>().currenthealth-= collider.gameObject.GetComponent<EnemyAI>().enemyDamage;
         }
     }
 
