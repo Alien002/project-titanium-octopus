@@ -13,9 +13,12 @@ public class PlayerUI : MonoBehaviour
     public int ammo_used;
     public int total_ammo = 120;
     public int points = 0;
+    public int armor = 0;
     public Text health_text;
     public Text Bullet_text;
     public Text point_text;
+    public Text armor_text;
+    public Text round_text;
     public GameObject player;
     public AudioSource reload_sound;
     public AudioSource fire_sound;
@@ -28,15 +31,21 @@ public class PlayerUI : MonoBehaviour
         currenthealth = 1;
         currentammo = maxclip;
         ammo_used = 0;
+        armor = 15;
         health_text = health_text.GetComponent<Text>();
         Bullet_text = Bullet_text.GetComponent<Text>();
         point_text = point_text.GetComponent<Text>();
-        
+        armor_text = armor_text.GetComponent<Text>();
+        round_text = round_text.GetComponent<Text>();
 
         health_text.text = currenthealth.ToString();
         health_text.fontSize = 24;
         Bullet_text.text = currentammo.ToString() + "\\" + reserve.ToString();
         Bullet_text.fontSize = 24;
+        armor_text.text = armor.ToString();
+        armor_text.fontSize = 24;
+        round_text.text = "Round: ";
+        round_text.fontSize = 32;
         point_text.text = "Points" + points;
         point_text.fontSize = 24;
 
@@ -65,7 +74,7 @@ public class PlayerUI : MonoBehaviour
                         if (reserve <= maxclip)
                         {
                             currentammo = reserve;
-                            reserve -= maxclip;
+                            reserve = 0;
                         }
                         else
                         {
@@ -101,7 +110,14 @@ public class PlayerUI : MonoBehaviour
             }
             else
             {
-                currenthealth--;
+                if (armor > 0)
+                {
+                    armor--;
+                }
+                else
+                {
+                    currenthealth--;
+                }
             }
         }
 
@@ -139,7 +155,8 @@ public class PlayerUI : MonoBehaviour
         Bullet_text.text = currentammo.ToString() + "\\" + reserve.ToString();
         Bullet_text.fontSize = 32;
         point_text.text = "Points: " + points;
-        point_text.fontSize = 32;
-
+        point_text.fontSize = 24;
+        armor_text.text = armor.ToString();
+        armor_text.fontSize = 40;
     }
 }
