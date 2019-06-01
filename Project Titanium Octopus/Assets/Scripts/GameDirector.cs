@@ -10,6 +10,7 @@ public class GameDirector : MonoBehaviour
     public GameObject healthPack;
     public GameObject ammoPack;
     public GameObject armorPack;
+    public GameObject[] pickUps;
 
     private string curRoom;
     private GameObject room;
@@ -46,10 +47,17 @@ public class GameDirector : MonoBehaviour
         isWaiting = false;
         roundOver = false;
 
+        pickUps = new GameObject[] { healthPack, armorPack, ammoPack };
+
         enemiesKilled = 0;
 
-        round = 1;
-        newRound();
+        round = 0;
+        enemy.GetComponentInChildren<EnemyHealth>().enemyMaxHealth = 100 + round * 10;
+        enemy.GetComponent<EnemyAI>().enemyDamage = 10 + 2 * round;
+        maxEnemiesAtOnce = round + 1;
+        maxEnemiesTotal = 1 + 3 * round;
+        enemiesSpawnedThisRound = 0;
+        //newRound();
     }
 
     // Update is called once per frame
@@ -83,6 +91,9 @@ public class GameDirector : MonoBehaviour
             {
                 timer = 0.0f;
                 roundOver = false;
+                Vector3 spawnCoord = GameObject.Find(curRoom).GetComponent<Transform>().position;
+                int pickUpInd = Random.Range(0, 3);
+                Instantiate(pickUps[pickUpInd], spawnCoord, Quaternion.identity, GameObject.Find(curRoom).GetComponent<Transform>());
             }
         }
         //else if(string.Compare(curRoom, "StartingRoom_DEMO") != 0)
