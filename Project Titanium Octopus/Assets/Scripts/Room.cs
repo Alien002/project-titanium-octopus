@@ -37,6 +37,7 @@ public class Room : MonoBehaviour
         boxCol.center = bounds.center;// + new Vector3(0f, -2f, 0f);
         boxCol.size = bounds.size;
         boxCol.isTrigger = true;
+        print(boxCol.size);
 
         /*if (floor)
         {

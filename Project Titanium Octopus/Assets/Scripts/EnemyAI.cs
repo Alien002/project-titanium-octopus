@@ -10,11 +10,14 @@ public class EnemyAI : MonoBehaviour
     private float speed = .05f;
     private float searchDist = 20.0f;
 
+    public int enemyDamage;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
         gameDirector = GameObject.Find("GameDirector");
+        enemyDamage = 10;
     }
 
     // Update is called once per frame
@@ -34,7 +37,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (collider.gameObject.name.Contains("Player"))
         {
-            gameDirector.GetComponent<GameDirector>().restartLevel();
+            //gameDirector.GetComponent<GameDirector>().restartLevel();
             Destroy(this.gameObject);
         }
 

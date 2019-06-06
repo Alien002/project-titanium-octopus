@@ -28,7 +28,7 @@ public class PlayerUI : MonoBehaviour
     {
         reload_sound.mute = true;
         fire_sound.mute = true;
-        currenthealth = 1;
+        currenthealth = 100;
         currentammo = maxclip;
         ammo_used = 0;
         armor = 15;
