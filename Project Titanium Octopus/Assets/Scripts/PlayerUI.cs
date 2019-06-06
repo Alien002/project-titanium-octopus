@@ -156,6 +156,8 @@ public class PlayerUI : MonoBehaviour
         Bullet_text.fontSize = 32;
         point_text.text = "Points: " + points;
         point_text.fontSize = 24;
+        round_text.text = "Round: " + player.GetComponent<GameDirector>().round;
+        round_text.fontSize = 32;
         armor_text.text = armor.ToString();
         armor_text.fontSize = 40;
     }
