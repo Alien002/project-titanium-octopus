@@ -110,8 +110,8 @@ public class GameDirector : MonoBehaviour
                         int spawnInd = Random.Range(0, 4);
                         //Vector3 spawnCoord = GameObject.Find(curRoom + "/EnemySpawns/EnemySpawn" + spawnInd).GetComponent<Transform>().position;
                         Vector3 spawnCoordBounds = GameObject.Find(curRoom).GetComponent<Room>().boxCol.size;
-                        Vector3 spawnCoord = GameObject.Find(curRoom).GetComponent<Transform>().position +
-                            new Vector3(Random.Range(0, spawnCoordBounds.x - 2), -2, Random.Range(0, spawnCoordBounds.z - 2));
+                        Vector3 spawnCoord = //GameObject.Find(curRoom).GetComponent<Transform>().position +
+                            new Vector3(Random.Range(0, (spawnCoordBounds.x / 2) - 2), -2, Random.Range(0, (spawnCoordBounds.z / 2) - 2));
                         //spawnCoord.y += 3;
 
                         Instantiate(enemy, spawnCoord, Quaternion.identity, GameObject.Find(curRoom).GetComponent<Transform>());

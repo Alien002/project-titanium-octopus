@@ -465,11 +465,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 207f465310e5eb948a989283bac9f5c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabList: []
-  Prefab1: {fileID: 4851045790459182981, guid: 9dfb348deafec394a939ba0debccc8fc, type: 3}
-  Prefab2: {fileID: 5147756543485981990, guid: 512108c27e5b26b40b8ba59f4cde63a9, type: 3}
-  Prefab3: {fileID: 6059683098241692697, guid: 65cba983e6240e64f8f815adac2895b3, type: 3}
-  Prefab4: {fileID: 6034265485904814944, guid: 003d5ade023720c40a8b665a220c0c77, type: 3}
 --- !u!4 &110283975
 Transform:
   m_ObjectHideFlags: 0
@@ -1105,6 +1100,7 @@ MonoBehaviour:
   ammoPack: {fileID: 893393897490838082, guid: a4599169ace13024d8cf63b68c75e7c7, type: 3}
   armorPack: {fileID: 5307177626211797468, guid: f3f0e4d6594a67944a563afeedd62e71,
     type: 3}
+  pickUps: []
   round: 0
 --- !u!4 &740966866
 Transform:
@@ -2370,7 +2366,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 1
 --- !u!64 &1080246407
 MeshCollider:
   m_ObjectHideFlags: 0
