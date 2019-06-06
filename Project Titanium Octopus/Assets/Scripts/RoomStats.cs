@@ -22,6 +22,7 @@ public class RoomStats : MonoBehaviour
     bool doorZPlusNeedsNewRoom;
     bool doorZMinusNeedsNewRoom;
     bool tooFar;
+    int hallwayCount;
     // Start is called before the first frame update
     void Start()
     {
@@ -65,10 +66,20 @@ public class RoomStats : MonoBehaviour
                 GameObject c;
                 if (!isDoorway && !isRoom)
                 {
-                    c = Instantiate(roomTracker.GetComponent<Prefabs>().prefabList[(UnityEngine.Random.Range(1, roomTracker.GetComponent<Prefabs>().prefabList.Count))]);
+                    hallwayCount += 1;
+                    if (hallwayCount >= 2)
+                    {
+                        hallwayCount = 0;
+                        c = Instantiate(roomTracker.GetComponent<Prefabs>().prefabList[3]);
+                    }
+                    else
+                    {
+                        c = Instantiate(roomTracker.GetComponent<Prefabs>().prefabList[(UnityEngine.Random.Range(1, roomTracker.GetComponent<Prefabs>().prefabList.Count))]);
+                    }
                 }
                 else if (isRoom)
                 {
+                    hallwayCount = 0;
                     c = Instantiate(roomTracker.GetComponent<Prefabs>().prefabList[(UnityEngine.Random.Range(1, roomTracker.GetComponent<Prefabs>().prefabList.Count - 1))]);
                 }
                 else
@@ -86,7 +97,7 @@ public class RoomStats : MonoBehaviour
                         c.GetComponent<RoomStats>().roomTracker = roomTracker;
                         c.GetComponent<RoomStats>().doorZPlus = true;
                         float dist = Vector3.Distance(c.transform.position, Vector3.zero);
-                        if (dist > 200)
+                        if (dist > 400)
                         {
                             c.GetComponent<RoomStats>().tooFar = true;
                         }
@@ -97,12 +108,12 @@ public class RoomStats : MonoBehaviour
                         c.GetComponent<RoomStats>().roomTracker = roomTracker;
                         c.GetComponent<RoomStats>().doorZPlus = true;
                         float dist = Vector3.Distance(c.transform.position, Vector3.zero);
-                        if (dist > 200)
+                        if (dist > 400)
                         {
                             c.GetComponent<RoomStats>().tooFar = true;
                         }
                     }
-                doorZPlusNeedsNewRoom = false;
+                c.GetComponent<RoomStats>().hallwayCount = hallwayCount;
             }
             else
             {
@@ -111,6 +122,7 @@ public class RoomStats : MonoBehaviour
                 Vector3 difference = pivotLeftFront.transform.position - pivotLeftBackC.transform.position;
                 c.transform.Translate(difference.z, difference.y, 0);
             }
+            doorZPlusNeedsNewRoom = false;
         }
         if (doorZMinusNeedsNewRoom == true)
         {

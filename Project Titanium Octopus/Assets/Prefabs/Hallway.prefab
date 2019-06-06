@@ -156,7 +156,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: -2125774551491969924, guid: 5ff0cdad2147e3b4da2bbacc961de323, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -194,6 +194,8 @@ MonoBehaviour:
   doorXMinus: 0
   doorZPlus: 0
   doorZMinus: 0
+  isRoom: 0
+  isDoorway: 0
 --- !u!65 &9155128175099217710
 BoxCollider:
   m_ObjectHideFlags: 0
