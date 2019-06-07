@@ -83,6 +83,7 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        //print(collision.gameObject.name);
         // RICOCHET GOES HERE
         if (initialShot)
         {
@@ -90,13 +91,25 @@ public class Bullet : MonoBehaviour
         }
         // If it hits a wall, it should bounce horizontally and continue falling vertically
         //if (collision.gameObject.name.Contains("Wall"))
-        if (collision.gameObject.name.Contains("Room"))
+        if (collision.gameObject.name.Contains("EnemyCore"))
         {
+            print("Core");
+            collision.gameObject.GetComponent<EnemyCore>().KillCore();
+        }
+        else if (collision.gameObject.name.Contains("enemy"))
+        {
+            print("damage");
+            collision.gameObject.GetComponent<EnemyHealth>().DamageEnemy(50);
+        }
+        else if (collision.gameObject.name.Contains("Room"))
+        {
+            print("room");
             GetComponent<Rigidbody>().velocity = new Vector3(-GetComponent<Rigidbody>().velocity.x / 10f, GetComponent<Rigidbody>().velocity.y, -GetComponent<Rigidbody>().velocity.z / 10f);
         }
         // If it hits a floor, it should bounce vertically and continue its horizontal path
-        if (collision.gameObject.name.Contains("Floor"))
+        else if (collision.gameObject.name.Contains("Floor"))
         {
+            print("floor");
             GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, -GetComponent<Rigidbody>().velocity.y / 10.0f, GetComponent<Rigidbody>().velocity.z);
             if (GetComponent<Rigidbody>().velocity.x < 0.1f)
                 GetComponent<Rigidbody>().velocity = new Vector3(0.0f, GetComponent<Rigidbody>().velocity.y, GetComponent<Rigidbody>().velocity.z);
@@ -105,16 +118,19 @@ public class Bullet : MonoBehaviour
             if (GetComponent<Rigidbody>().velocity.z < 0.1f)
                 GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, GetComponent<Rigidbody>().velocity.y, 0.0f);
         }
+        
     }
 
     void OnTriggerEnter(Collider collider)
     {
+       // print(collider.gameObject.name);
         if (initialShot)
         {
             initialShot = false;
         }
         if (collider.gameObject.name.Contains("Gel"))
         {
+            print("gel");
             if (!inGel)
             {
                 inGel = true;
@@ -125,12 +141,22 @@ public class Bullet : MonoBehaviour
             if (GetComponent<Rigidbody>().velocity.z < 0.1f)
                 GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, GetComponent<Rigidbody>().velocity.y, 0.0f);
         }
+        if (collider.gameObject.name.Contains("EnemyCore"))
+        {
+            collider.gameObject.GetComponent<EnemyCore>().KillCore();
+        }
+        /*if (collider.gameObject.name.Contains("enemy"))
+        {
+            print("damage2");
+            collider.gameObject.GetComponent<EnemyHealth>().DamageEnemy(50);
+        }*/
     }
 
     void OnTriggerStay(Collider collider)
     {
         if (collider.gameObject.name.Contains("Gel"))
         {
+            print("gel");
             GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x / 100f, 0.0f, GetComponent<Rigidbody>().velocity.z / 100f);
             if (GetComponent<Rigidbody>().velocity.x < 0.1f)
                 GetComponent<Rigidbody>().velocity = new Vector3(0.0f, GetComponent<Rigidbody>().velocity.y, GetComponent<Rigidbody>().velocity.z);

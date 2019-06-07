@@ -44,9 +44,9 @@ public class PlayerUI : MonoBehaviour
         Bullet_text.fontSize = 24;
         armor_text.text = armor.ToString();
         armor_text.fontSize = 24;
-        round_text.text = "Round: ";
+        round_text.text = "Round: " + (GameObject.Find("GameDirector").GetComponent<GameDirector>().round + 1);
         round_text.fontSize = 32;
-        point_text.text = "Points" + points;
+        point_text.text = "Points: " + points;
         point_text.fontSize = 24;
 
     }
@@ -54,10 +54,16 @@ public class PlayerUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        round_text.text = "Round: " + (GameObject.Find("GameDirector").GetComponent<GameDirector>().round + 1);
+
+        if (currenthealth < 0)
+            currenthealth = 0;
+        if (armor < 0)
+            armor = 0;
 
         if (player.GetComponent<PauseMenu>().gameover == false && player.GetComponent<PauseMenu>().GamePaused == false)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetButtonDown("Fire1"))
             {
                 if (reserve != 0)
                 {
@@ -67,7 +73,7 @@ public class PlayerUI : MonoBehaviour
                     currentammo--;
                     total_ammo--;
                     ammo_used++;
-                    points++;
+                    //points++;
                     if (currentammo == 0)
                     {
                         ammo_used = 0;
@@ -95,14 +101,14 @@ public class PlayerUI : MonoBehaviour
                         currentammo--;
                         total_ammo--;
                         ammo_used++;
-                        points++;
+                        //points++;
 
                     }
                 }
             }
         }
 
-        if (Input.GetMouseButtonDown(1))
+       /* if (Input.GetMouseButtonDown(1))
         {
             if (currenthealth == 0)
             {
@@ -119,7 +125,7 @@ public class PlayerUI : MonoBehaviour
                     currenthealth--;
                 }
             }
-        }
+        }*/
 
         if (Input.GetKey(KeyCode.R))
         {

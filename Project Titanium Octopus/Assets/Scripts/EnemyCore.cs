@@ -30,6 +30,8 @@ public class EnemyCore : MonoBehaviour
         Destroy(this.transform.parent.gameObject);
         coreCurrHealth = 0;
         gameDirector.GetComponent<GameDirector>().enemyKilled();
+
+        GameObject.Find("Player").GetComponent<PlayerUI>().points += 50;
     }
 
     public void SetMaxEnemyCore()

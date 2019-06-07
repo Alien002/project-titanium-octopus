@@ -1736,7 +1736,7 @@ GameObject:
   - component: {fileID: 914053750}
   - component: {fileID: 914053749}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: LoadSceneOnScript
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3489,9 +3489,12 @@ MonoBehaviour:
   ammo_used: 0
   total_ammo: 120
   points: 0
+  armor: 0
   health_text: {fileID: 973424024}
   Bullet_text: {fileID: 31418417}
   point_text: {fileID: 793200421}
+  armor_text: {fileID: 0}
+  round_text: {fileID: 0}
   player: {fileID: 1777945019}
   reload_sound: {fileID: 1021184721}
   fire_sound: {fileID: 1820290304}

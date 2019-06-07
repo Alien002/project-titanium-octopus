@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameDirector : MonoBehaviour
 {
@@ -33,9 +34,16 @@ public class GameDirector : MonoBehaviour
 
     public int round;
 
+    private GameObject[] rooms;
+
     // Start is called before the first frame update
     void Start()
     {
+        //SceneManager.LoadScene(SceneManager.GetActiveScene());
+        Scene scene = SceneManager.GetActiveScene();
+
+        rooms = GameObject.FindGameObjectsWithTag("Room");
+
         playerStartingPos = player.GetComponent<Transform>().position;
         playerStartingRot = player.GetComponent<Transform>().rotation;
 
@@ -54,8 +62,8 @@ public class GameDirector : MonoBehaviour
         round = 0;
         enemy.GetComponentInChildren<EnemyHealth>().enemyMaxHealth = 100 + round * 10;
         enemy.GetComponent<EnemyAI>().enemyDamage = 10 + 2 * round;
-        maxEnemiesAtOnce = round + 1;
-        maxEnemiesTotal = 1 + 3 * round;
+        maxEnemiesAtOnce = 3;
+        maxEnemiesTotal = 5;
         enemiesSpawnedThisRound = 0;
         //newRound();
     }
@@ -87,34 +95,81 @@ public class GameDirector : MonoBehaviour
         else if(roundOver)
         {
             timer += Time.deltaTime;
-            if (timer >= 10.0f)
+            if (timer >= 5.0f)
             {
                 timer = 0.0f;
                 roundOver = false;
-                Vector3 spawnCoord = GameObject.Find(curRoom).GetComponent<Transform>().position;
-                int pickUpInd = Random.Range(0, 3);
-                Instantiate(pickUps[pickUpInd], spawnCoord, Quaternion.identity, GameObject.Find(curRoom).GetComponent<Transform>());
+
+                for (int i = 0; i < round; i++)
+                {
+                    GameObject roomToSpawn;
+
+                    if (i == 0)
+                    {
+                        roomToSpawn = GameObject.Find(curRoom);
+                    }
+                    else
+                    {
+                        roomToSpawn = rooms[Random.Range(0, rooms.Length)];
+                    }
+
+                    Vector3 spawnCoord = roomToSpawn.GetComponent<Transform>().position;
+                    spawnCoord = new Vector3(spawnCoord.x, -1.5f, spawnCoord.z);
+                    int pickUpInd = Random.Range(0, 3);
+                    Instantiate(pickUps[pickUpInd], spawnCoord, Quaternion.identity, GameObject.Find(curRoom).GetComponent<Transform>());
+                }
             }
         }
         //else if(string.Compare(curRoom, "StartingRoom_DEMO") != 0)
         else
         {
-            //print(numEnemies);
+            print(enemiesSpawnedThisRound);
+            print(maxEnemiesTotal);
+            print(numEnemiesAlive);
+            //print(round);
             if (numEnemiesAlive == 0)
             {
+                //print(enemiesSpawnedThisRound);
+                //print(maxEnemiesTotal);
                 if (enemiesSpawnedThisRound < maxEnemiesTotal)
                 {
-                    for (int i = 0; i < maxEnemiesAtOnce; i++)
+                    int enemiesToSpawn;
+
+                    if (maxEnemiesTotal - maxEnemiesAtOnce > maxEnemiesAtOnce)
+                        enemiesToSpawn = maxEnemiesAtOnce;
+                    else
+                        enemiesToSpawn = maxEnemiesTotal - maxEnemiesAtOnce;
+
+                    for (int i = 0; i < enemiesToSpawn; i++)
                     {
+                        GameObject roomToSpawn;
+                        print(curRoom);
+
+                        if(i == 0)
+                        {
+                            roomToSpawn = GameObject.Find(curRoom);
+                        }
+                        else
+                        {
+                            roomToSpawn = rooms[Random.Range(0, rooms.Length)];
+                            print(roomToSpawn);
+                        }
+
+                        if(roomToSpawn == null)
+                        {
+                            roomToSpawn = rooms[Random.Range(0, rooms.Length)];
+                        }
+
                         numEnemiesAlive++;
                         int spawnInd = Random.Range(0, 4);
                         //Vector3 spawnCoord = GameObject.Find(curRoom + "/EnemySpawns/EnemySpawn" + spawnInd).GetComponent<Transform>().position;
-                        Vector3 spawnCoordBounds = GameObject.Find(curRoom).GetComponent<Room>().boxCol.size;
-                        Vector3 spawnCoord = //GameObject.Find(curRoom).GetComponent<Transform>().position +
+                        print(roomToSpawn);
+                        Vector3 spawnCoordBounds = roomToSpawn.GetComponent<Room>().boxCol.size;
+                        Vector3 spawnCoord = roomToSpawn.GetComponent<Transform>().position +
                             new Vector3(Random.Range(0, (spawnCoordBounds.x / 2) - 2), -2, Random.Range(0, (spawnCoordBounds.z / 2) - 2));
                         //spawnCoord.y += 3;
 
-                        Instantiate(enemy, spawnCoord, Quaternion.identity, GameObject.Find(curRoom).GetComponent<Transform>());
+                        Instantiate(enemy, spawnCoord, Quaternion.identity, roomToSpawn.GetComponent<Transform>());
                         enemiesSpawnedThisRound++;
                     }
                 }
@@ -152,8 +207,8 @@ public class GameDirector : MonoBehaviour
     {
         enemy.GetComponentInChildren<EnemyHealth>().enemyMaxHealth = 100 + round * 10;
         enemy.GetComponent<EnemyAI>().enemyDamage = 10 + 2 * round;
-        maxEnemiesAtOnce = round;
-        maxEnemiesTotal = 1 + 3 * round;
+        maxEnemiesAtOnce = 3 + round * 2;
+        maxEnemiesTotal = 5 + 3 * round;
         enemiesSpawnedThisRound = 0;
         roundOver = true;
     }

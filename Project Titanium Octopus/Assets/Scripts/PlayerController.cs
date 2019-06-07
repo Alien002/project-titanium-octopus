@@ -43,31 +43,61 @@ public class PlayerController : MonoBehaviour
         {
             GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
+        
     }
 
     void OnTriggerEnter(Collider collider)
     {
         print(collider.gameObject.name);
+        if (collider.gameObject.name.Contains("HitBox"))
+        {
+            // print("player hurt");
+            //print(collider.gameObject.name);
+
+            int dmg = collider.gameObject.GetComponent<Transform>().parent.GetComponent<EnemyAI>().enemyDamage;
+
+            if (this.GetComponent<PlayerUI>().armor > 0)
+                this.GetComponent<PlayerUI>().armor -= dmg / 2;
+            else
+                this.GetComponent<PlayerUI>().currenthealth -= dmg;
+
+            collider.gameObject.GetComponent<Transform>().parent.GetComponent<EnemyAI>().hitPlayer = true;
+            //collider.gameObject.GetComponent<EnemyHealth>().enemyDamage;
+            //print(this.GetComponent<PlayerUI>().currenthealth);
+            // TODO: Take armor into consideration
+
+            Vector3 impactDirection = new Vector3(collider.GetComponent<Transform>().position.x - this.GetComponent<Transform>().position.x, 0.0f, 
+                collider.GetComponent<Transform>().position.z - this.GetComponent<Transform>().position.z);
+
+            this.GetComponent<ImpactReceiver>().AddImpact(-1 * impactDirection, 50.0f);
+
+        }
         if (collider.gameObject.name.Contains("Room"))
         {
+            print(collider.gameObject.name);
             curRoom = collider.gameObject.name;
         }
-        if (collider.gameObject.name.Contains("enemy"))
+        if (collider.gameObject.name.Contains("Ammo"))
         {
-            this.GetComponent<PlayerUI>().currenthealth-= collider.gameObject.GetComponent<EnemyAI>().enemyDamage;
-            // TODO: Take armor into consideration
+            print("pickup");
+            this.GetComponent<PlayerUI>().reserve += 15;
+            Destroy(collider.gameObject);
         }
-        if (collider.gameObject.name.Contains("AmmoPack"))
+        if (collider.gameObject.name.Contains("Armor"))
         {
-            this.GetComponent<PlayerUI>().reserve += 45;
-        }
-        if (collider.gameObject.name.Contains("ArmorPack"))
-        {
+            print("pickup");
             // TODO: Increase Armor
+            this.GetComponent<PlayerUI>().armor += 15;
+            Destroy(collider.gameObject);
         }
-        if (collider.gameObject.name.Contains("HealthPack"))
+        if (collider.gameObject.name.Contains("Health"))
         {
-            this.GetComponent<PlayerUI>().currenthealth += 20;
+            print("pickup");
+            if (this.GetComponent<PlayerUI>().currenthealth >= 100)
+                this.GetComponent<PlayerUI>().currenthealth += 5;
+            else
+                this.GetComponent<PlayerUI>().currenthealth += 20;
+            Destroy(collider.gameObject);
         }
     }
 

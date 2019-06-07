@@ -18,6 +18,7 @@ public class EnemyHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        enemyDamage = this.gameObject.GetComponent<Transform>().parent.gameObject.GetComponent<EnemyAI>().enemyDamage;
         if (enemyCurrHealth <= 0)
         {
             KillEnemy();
@@ -34,6 +35,7 @@ public class EnemyHealth : MonoBehaviour
         //Destroy(this.gameObject);
         Destroy(this.transform.parent.gameObject);
         gameDirector.GetComponent<GameDirector>().enemyKilled();
+        GameObject.Find("Player").GetComponent<PlayerUI>().points += 10;
     }
 
     public void SetMaxEnemyHealth()
@@ -42,16 +44,17 @@ public class EnemyHealth : MonoBehaviour
     }
 
 
-    void OnTriggerEnter(Collider collider)
+    void OnCollisionEnter(Collision collision)
     {
-        /*if (collider.gameObject.name == ("Player"))
+        print("enemyhealth");
+        if (collision.gameObject.name == ("Player"))
         {
-            collider.gameObject.GetComponent<PlayerHealth>().DamagePlayer(enemyDamage);
-        }*/
-        if (collider.gameObject.name.Contains("Bullet"))
+            collision.gameObject.GetComponent<PlayerUI>().currenthealth -= enemyDamage;
+        }
+        /*if (collider.gameObject.name.Contains("Bullet"))
         {
             print("body");
             DamageEnemy(50);
-        }
+        }*/
     }
 }

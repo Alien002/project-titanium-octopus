@@ -34,7 +34,7 @@ public class Room : MonoBehaviour
         child.transform.position = this.transform.position;
 
         boxCol = child.gameObject.AddComponent<BoxCollider>();
-        boxCol.center = bounds.center;// + new Vector3(0f, -2f, 0f);
+        boxCol.center = new Vector3(0f, 0f, 0f);//bounds.center;// + new Vector3(0f, -2f, 0f);
         boxCol.size = bounds.size;
         boxCol.isTrigger = true;
         print(boxCol.size);
