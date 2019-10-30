@@ -15,3 +15,7 @@ Storyboard, Level Design, Gameplay: Richard Luong, Elijah Nicasio <br />
 Unity <br />
 
 ## Description
+Project Titanium Octopus is a physics-based first-person shooter video game. The goal of the game is to survive as long as possible against a wave gooey, humanoid monsters. The player is armed with a gun, and can fire physics-based bullets at the monsters.
+
+## Gameplay Video
+https://youtu.be/Sd33ttNO7n0
